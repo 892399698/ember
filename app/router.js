@@ -9,9 +9,14 @@ Router.map(function() {
     this.route("login");
     this.resource("ember", function() {
         this.route("index");
-        this.route("show", {
-            path: "/:name"
-        })
+        this.route("modules")
+        // this.route("show", {
+        //     path: "/:name"
+        // })
+    });
+    this.resource("ember-data", function() {
+        this.route("index");
+        this.route("modules")
     });
     this.resource("manage", function() {
 

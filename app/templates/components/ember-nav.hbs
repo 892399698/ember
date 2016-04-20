@@ -3,14 +3,22 @@
     <a href="" title="首页">首页</a>
   </li> --}}
   <li>
-    <a href="" title="ember">项目</a>
+    <span>项目</span>
     <ul>
       <li>
         {{#link-to "ember"}}ember{{/link-to}}
       </li>
       <li>
-        {{#link-to "ember"}}ember-data{{/link-to}}
+        {{#link-to "ember-data"}}ember-data{{/link-to}}
       </li>
     </ul>
   </li>
+  {{#each navs as |nav|}}
+    <li>
+      <span {{action "getList" nav.id}}>{{nav.title}}</span>
+      {{#if manage}}
+        <i class="fa fa-plus"></i>
+      {{/if}}
+    </li>
+  {{/each}}
 </ul>
