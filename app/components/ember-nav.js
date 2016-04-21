@@ -7,7 +7,12 @@ export default Ember.Component.extend({
     if(type=="ember"){
       return [{
         title:"modules",
-        id:""
+        id:"",
+        display:false,
+        children:[{
+          title:"ember",
+          id:"",
+        }]
       }];
     }else{
       return [{
@@ -16,5 +21,13 @@ export default Ember.Component.extend({
       }]
     }
   }.property(),
-
+  actions:{
+    toggleDisplay(item){
+      Ember.set(item,"display",!item.display)
+    },
+    goToNav(pTitle,title){
+      console.log(pTitle)
+      console.log(title)
+    }
+  }
 })

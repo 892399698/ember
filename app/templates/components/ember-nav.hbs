@@ -6,19 +6,41 @@
     <span>项目</span>
     <ul>
       <li>
-        {{#link-to "ember"}}ember{{/link-to}}
+        {{#if manage}}
+          {{#link-to "manage.ember"}}ember{{/link-to}}
+        {{else}}
+          {{#link-to "ember"}}ember{{/link-to}}
+        {{/if}}
       </li>
       <li>
-        {{#link-to "ember-data"}}ember-data{{/link-to}}
+        {{#if manage}}
+          {{#link-to "manage.ember-data"}}ember-data{{/link-to}}
+        {{else}}
+          {{#link-to "ember-data"}}ember-data{{/link-to}}
+        {{/if}}
+        
       </li>
     </ul>
   </li>
   {{#each navs as |nav|}}
     <li>
-      <span {{action "getList" nav.id}}>{{nav.title}}</span>
-      {{#if manage}}
-        <i class="fa fa-plus"></i>
+      <span {{action "toggleDisplay" nav}}>{{nav.title}}</span>
+      {{#if nav.children.length}}
+        {{#if nav.display}}
+          <ul>
+            {{#each nav.children as |c|}}
+            {{#if manage}}
+              <li {{action "goToNav" nav.title c.title }} >{{c.title}}</li>
+            {{else}}
+              <li>{{c.title}}</li>
+            {{/if}}
+            {{/each}}
+          </ul>
+        {{/if}}
       {{/if}}
+      {{!-- {{#if manage}}
+        <i {{action "addParentNav" nav.id}} class="fa fa-plus"></i>
+      {{/if}} --}}
     </li>
   {{/each}}
 </ul>

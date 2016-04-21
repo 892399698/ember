@@ -19,7 +19,8 @@ Router.map(function() {
         this.route("modules")
     });
     this.resource("manage", function() {
-
+      this.route("ember")
+      this.route("ember-data")
     })
 });
 
