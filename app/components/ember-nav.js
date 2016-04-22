@@ -1,33 +1,42 @@
 export default Ember.Component.extend({
-  // tagName:"",
-  classNames:["ember-nav"],
-  type:"ember",
-  navs:function(){
-    var type=this.get("type");
-    if(type=="ember"){
-      return [{
-        title:"modules",
-        id:"",
-        display:false,
-        children:[{
-          title:"ember",
-          id:"",
-        }]
-      }];
-    }else{
-      return [{
-        title:"modules",
-        id:""
-      }]
+    // tagName:"",
+    classNames: ["ember-nav"],
+    type: "ember",
+    navs: function() {
+        var type = this.get("type");
+        if (type == "ember") {
+            return [{
+                title: "modules",
+                id: "",
+                display: false,
+                children: [{
+                    title: "ember",
+                    id: "",
+                }]
+            }];
+        } else {
+            return [{
+                title: "modules",
+                id: ""
+            }]
+        }
+    }.property(),
+    actions: {
+        toggleDisplay(item) {
+            Ember.set(item, "display", !item.display)
+        },
+        goToNav(pTitle, title) {
+            // console.log(this.get("apiPath"))
+            Ember.$.get(UDD.apiBase+"getArticle", {
+                pTitle: pTitle,
+                title: title
+            }).then(function(res) {
+                if (res.code === 1000) {
+
+                } else {
+                    alert(res.msg || "获取内容错误！")
+                }
+            })
+        }
     }
-  }.property(),
-  actions:{
-    toggleDisplay(item){
-      Ember.set(item,"display",!item.display)
-    },
-    goToNav(pTitle,title){
-      console.log(pTitle)
-      console.log(title)
-    }
-  }
 })
