@@ -29,11 +29,11 @@
         {{#if nav.display}}
           <ul>
             {{#each nav.children as |c|}}
-            {{#if manage}}
+            {{!-- {{#if manage}} --}}
               <li {{action "goToNav" nav.title c.title }} >{{c.title}}</li>
-            {{else}}
+            {{!-- {{else}}
               <li>{{c.title}}</li>
-            {{/if}}
+            {{/if}} --}}
             {{/each}}
           </ul>
         {{/if}}

@@ -9,7 +9,11 @@ Router.map(function() {
     this.route("login");
     this.resource("ember", function() {
         this.route("index");
-        this.route("modules")
+        this.route("modules",function(){
+            this.route("show",{
+                path:"/:name"
+            })
+        })
         // this.route("show", {
         //     path: "/:name"
         // })

@@ -2,6 +2,7 @@ export default Ember.Component.extend({
     // tagName:"",
     classNames: ["ember-nav"],
     type: "ember",
+    navAction:"goToNav",
     navs: function() {
         var type = this.get("type");
         if (type == "ember") {
@@ -26,17 +27,17 @@ export default Ember.Component.extend({
             Ember.set(item, "display", !item.display)
         },
         goToNav(pTitle, title) {
-            // console.log(this.get("apiPath"))
-            Ember.$.get(UDD.apiBase+"getArticle", {
-                pTitle: pTitle,
-                title: title
-            }).then(function(res) {
-                if (res.code === 1000) {
+            this.sendAction("navAction",pTitle,title);
+            // Ember.$.get(UDD.apiBase+"getArticle", {
+            //     pTitle: pTitle,
+            //     title: title
+            // }).then(function(res) {
+            //     if (res.code === 1000) {
 
-                } else {
-                    alert(res.msg || "获取内容错误！")
-                }
-            })
+            //     } else {
+            //         alert(res.msg || "获取内容错误！")
+            //     }
+            // })
         }
     }
 })
