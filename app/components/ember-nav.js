@@ -12,7 +12,10 @@ export default Ember.Component.extend({
                 display: false,
                 children: [{
                     title: "ember",
-                    id: "",
+                    id: "ember",
+                },{
+                    title: "ember-application",
+                    id: "ember_application",
                 }]
             }];
         } else {

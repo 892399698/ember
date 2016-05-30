@@ -5,9 +5,9 @@ export default Ember.Route.extend({
             //TODO判断params.name为空清空
         var articleDefer = Ember.RSVP.defer()
         Ember.$.get(UDD.apiBase + "getArticle", {
-            table: "ember",
-            pTitle: "modules",
-            title: params.name
+            proj: "ember",
+            namespace: "modules",
+            property: params.name
         }).then(function(res) {
             if (res.code === 1000) {
                 articleDefer.resolve(res.data);
