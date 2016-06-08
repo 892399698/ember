@@ -7,11 +7,12 @@ export default Ember.Controller.extend({
       if(!name || !password){
         alert("用户名或密码不能为空!")
       }
-      Ember.$.post("/ember_api/login",{
+      console.log(md5(password))
+      Ember.$.post("/ember_interface/login",{
         name:name,
-        password:password
+        password:md5(password)
       },function(){
-        self.transitionToRoute("manage.index");
+        self.transitionToRoute("ember.index");
       })
 
     }

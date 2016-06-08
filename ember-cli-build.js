@@ -42,6 +42,7 @@ module.exports = function(defaults) {
   app.import('bower_components/font-awesome/fonts/FontAwesome.otf', {
       destDir: 'fonts'
   });
+  app.import('bower_components/JavaScript-MD5/js/md5.js');
 
   return app.toTree();
 };
