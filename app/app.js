@@ -29,12 +29,12 @@ export default {
     common.injectData("UDD", UDD);
 
     window.UDD = UDD;
-    console.log(UDD)
 
-    // Ember.RSVP.all([
-    //    Ember.$.get(urls.apiBase + "/init_data"),
-    // ]).then(function([res]){
 
-    // })
+    Ember.RSVP.all([
+       Ember.$.get(UDD.apiBase + "init_conf_data"),
+    ]).then(function([res]){
+      UDD.status=res.status||0;
+    })
   }
 }

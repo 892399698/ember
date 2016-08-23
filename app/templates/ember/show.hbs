@@ -1,3 +1,17 @@
 <div class="">
-  {{data}}
+	{{#if (is-equal UDD.status 1)}}
+		{{#if editing}}
+			<a {{action 'save'}}>保存</a>
+		{{else}}
+			<a {{action 'edit'}}>编辑</a>
+		{{/if}}
+	{{/if}}
+  {{#if editing}}
+  	{{mk-editor value=data}}
+  	{{!-- <div contenteditable='true' class="editor">
+  		{{data}}
+  	</div> --}}
+  {{else}}
+  	{{htmlData}}
+  {{/if}}
 </div>
